@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/sencha-dev/powkit/internal/common"
-	"github.com/sencha-dev/powkit/internal/dag"
+	"github.com/snipa22/powkit/support/common"
+	"github.com/snipa22/powkit/support/dag"
 )
 
 type Client struct {

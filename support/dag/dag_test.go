@@ -20,8 +20,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/sencha-dev/powkit/internal/common"
-	"github.com/sencha-dev/powkit/internal/common/testutil"
+	"github.com/snipa22/powkit/support/common"
+	"github.com/snipa22/powkit/support/common/testutil"
 )
 
 func TestEpochNumber(t *testing.T) {

@@ -21,10 +21,10 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/sencha-dev/powkit/internal/common"
-	"github.com/sencha-dev/powkit/internal/common/convutil"
-	"github.com/sencha-dev/powkit/internal/common/testutil"
-	"github.com/sencha-dev/powkit/internal/crypto"
+	"github.com/snipa22/powkit/support/common"
+	"github.com/snipa22/powkit/support/common/convutil"
+	"github.com/snipa22/powkit/support/common/testutil"
+	"github.com/snipa22/powkit/support/crypto"
 )
 
 func TestCacheGeneration(t *testing.T) {

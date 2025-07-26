@@ -3,7 +3,7 @@ package cuckoo
 import (
 	"testing"
 
-	"github.com/sencha-dev/powkit/internal/common/testutil"
+	"github.com/snipa22/powkit/support/common/testutil"
 )
 
 func TestAeternity(t *testing.T) {

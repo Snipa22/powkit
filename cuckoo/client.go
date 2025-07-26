@@ -4,7 +4,7 @@ import (
 	"encoding/binary"
 	"fmt"
 
-	"github.com/sencha-dev/powkit/internal/crypto"
+	"github.com/snipa22/powkit/support/crypto"
 )
 
 type CuckooVariant int
@@ -62,7 +62,7 @@ func (c *Client) Verify(header []byte, sols []uint64) (bool, error) {
 	}
 
 	// create siphash keys
-	hash := crypto.Blake2b256(header)
+	hash := crypto.Blake2b512(header)
 	keys := [4]uint64{
 		binary.LittleEndian.Uint64(hash[0:8]),
 		binary.LittleEndian.Uint64(hash[8:16]),

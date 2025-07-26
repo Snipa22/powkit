@@ -5,7 +5,7 @@
 package progpow
 
 import (
-	"github.com/sencha-dev/powkit/internal/crypto"
+	"github.com/snipa22/powkit/support/crypto"
 )
 
 type mixRngState struct {

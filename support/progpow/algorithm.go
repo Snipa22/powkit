@@ -7,9 +7,9 @@ package progpow
 import (
 	"encoding/binary"
 
-	"github.com/sencha-dev/powkit/internal/common/convutil"
-	"github.com/sencha-dev/powkit/internal/crypto"
-	"github.com/sencha-dev/powkit/internal/dag"
+	"github.com/snipa22/powkit/support/common/convutil"
+	"github.com/snipa22/powkit/support/crypto"
+	"github.com/snipa22/powkit/support/dag"
 )
 
 const (

@@ -26,3 +26,8 @@ func Blake2b256(data []byte) []byte {
 	out := blake2b.Sum256(data)
 	return out[:]
 }
+
+func Blake2b512(data []byte) []byte {
+	out := blake2b.Sum512(data)
+	return out[:]
+}

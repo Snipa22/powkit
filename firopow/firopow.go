@@ -7,9 +7,9 @@ package firopow
 import (
 	"encoding/binary"
 
-	"github.com/sencha-dev/powkit/internal/common/convutil"
-	"github.com/sencha-dev/powkit/internal/crypto"
-	"github.com/sencha-dev/powkit/internal/progpow"
+	"github.com/snipa22/powkit/support/common/convutil"
+	"github.com/snipa22/powkit/support/crypto"
+	"github.com/snipa22/powkit/support/progpow"
 )
 
 func initialize(hash []byte, nonce uint64) ([25]uint32, uint64) {

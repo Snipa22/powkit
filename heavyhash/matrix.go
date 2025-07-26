@@ -5,7 +5,7 @@ package heavyhash
 import (
 	"math"
 
-	"github.com/sencha-dev/powkit/internal/crypto"
+	"github.com/snipa22/powkit/support/crypto"
 )
 
 const (

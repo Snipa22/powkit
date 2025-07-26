@@ -19,7 +19,7 @@ package ethash
 import (
 	"encoding/binary"
 
-	"github.com/sencha-dev/powkit/internal/crypto"
+	"github.com/snipa22/powkit/support/crypto"
 )
 
 const (
