@@ -116,3 +116,26 @@ func SipBlock48(siphashKeys [4]uint64, edge uint64) uint64 {
 
 	return block[edge&edgeBlockMask]
 }
+
+func SipBlock24(siphashKeys [4]uint64, edge uint64) uint64 {
+	const edgeBlockBits uint64 = 6
+	const edgeBlockSize uint64 = (1 << edgeBlockBits)
+	const edgeBlockMask uint64 = (edgeBlockSize - 1)
+
+	hasher := NewSipHasher(siphashKeys[0], siphashKeys[1], siphashKeys[2], siphashKeys[3])
+	block := make([]uint64, edgeBlockSize)
+	edge0 := edge & ^edgeBlockMask
+
+	var i uint64
+	for i = 0; i < edgeBlockSize; i++ {
+		hasher.Hash24(edge0 + uint64(i))
+		block[i] = hasher.XorLanes()
+	}
+
+	last := block[edgeBlockMask]
+	for i = 0; i < edgeBlockMask; i++ {
+		block[i] ^= last
+	}
+
+	return block[edge&edgeBlockMask]
+}

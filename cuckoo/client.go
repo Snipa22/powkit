@@ -56,6 +56,10 @@ func NewCuckarooWithSipBlock48(edgeBits, proofSize int) *Client {
 	return newClient(Cuckaroo, edgeBits, proofSize, nil, crypto.SipBlock48)
 }
 
+func NewCuckarooWithSipBlock24(edgeBits, proofSize int) *Client {
+	return newClient(Cuckaroo, edgeBits, proofSize, nil, crypto.SipBlock24)
+}
+
 func NewCortex() *Client {
 	return NewCuckaroo(30, 42, nil, crypto.SipBlock48)
 }
