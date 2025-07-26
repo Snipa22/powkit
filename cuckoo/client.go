@@ -52,8 +52,8 @@ func NewCuckaroo(edgeBits, proofSize int, sipnode crypto.SipNodeFunc, sipblock c
 	return newClient(Cuckaroo, edgeBits, proofSize, sipnode, sipblock)
 }
 
-func NewCuckarooWithSipNode24Legacy(edgeBits, proofSize int) *Client {
-	return newClient(Cuckaroo, edgeBits, proofSize, crypto.SipNode24Legacy, nil)
+func NewCuckarooWithSipBlock48(edgeBits, proofSize int) *Client {
+	return newClient(Cuckaroo, edgeBits, proofSize, nil, crypto.SipBlock48)
 }
 
 func NewCortex() *Client {
