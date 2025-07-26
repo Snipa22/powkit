@@ -52,6 +52,10 @@ func NewCuckaroo(edgeBits, proofSize int, sipnode crypto.SipNodeFunc, sipblock c
 	return newClient(Cuckaroo, edgeBits, proofSize, sipnode, sipblock)
 }
 
+func NewCuckarooWithSipNode24Legacy(edgeBits, proofSize int) *Client {
+	return newClient(Cuckaroo, edgeBits, proofSize, crypto.SipNode24Legacy, nil)
+}
+
 func NewCortex() *Client {
 	return NewCuckaroo(30, 42, nil, crypto.SipBlock48)
 }
@@ -62,7 +66,7 @@ func (c *Client) Verify(header []byte, sols []uint64) (bool, error) {
 	}
 
 	// create siphash keys
-	hash := crypto.Blake2b512(header)
+	hash := crypto.Blake2b256(header)
 	keys := [4]uint64{
 		binary.LittleEndian.Uint64(hash[0:8]),
 		binary.LittleEndian.Uint64(hash[8:16]),
