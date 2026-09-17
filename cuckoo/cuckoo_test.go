@@ -56,6 +56,31 @@ func TestAeternity(t *testing.T) {
 	}
 }
 
+func TestAeternityRejectsNonAscendingEdges(t *testing.T) {
+	header := testutil.MustDecodeHex("69435549583467653534384d6e4e6c4d714b6371365444674a6631446b783548594f4d67705041783249343d71414541414837384141413d000000000000000000000000000000000000000000000000")
+	sols := []uint64{
+		0x003b5d47, 0x00a70508, 0x00d0aa4a, 0x0238a16a, 0x038653bf, 0x03e91d96, 0x03f4baa8, 0x062ef17e,
+		0x065d7b41, 0x066fbb1e, 0x079af861, 0x08bd2cf2, 0x0956b89d, 0x0b56fb7f, 0x0c098553, 0x0c6d2c27,
+		0x0d8c0fd9, 0x0ddcbb1d, 0x0e3eccde, 0x0e464bef, 0x0fb09bef, 0x1267ebb1, 0x129ef8e6, 0x138432b5,
+		0x144d428b, 0x1484e6b6, 0x14efcfba, 0x158d5352, 0x159f3551, 0x15a07563, 0x160a3efd, 0x17c9b61e,
+		0x184499bc, 0x1844f434, 0x1919053a, 0x197a9095, 0x1aa04947, 0x1bc3f6e5, 0x1d8b4029, 0x1e6a1fe0,
+		0x1e7e4380, 0x1f5a2a50,
+	}
+
+	// Swap the first two edges so the list is no longer strictly ascending.
+	mutated := make([]uint64, len(sols))
+	copy(mutated, sols)
+	mutated[0], mutated[1] = mutated[1], mutated[0]
+
+	valid, err := NewAeternity().Verify(header, mutated)
+	if valid {
+		t.Errorf("expected invalid solution for non-ascending edges")
+	}
+	if err != ErrPowTooSmall {
+		t.Errorf("expected ErrPowTooSmall, got %v", err)
+	}
+}
+
 func TestCortex(t *testing.T) {
 	tests := []struct {
 		header []byte
@@ -103,5 +128,30 @@ func TestCortex(t *testing.T) {
 		} else if !valid {
 			t.Errorf("failed on %d: invalid solution", i)
 		}
+	}
+}
+
+func TestCortexRejectsNonAscendingEdges(t *testing.T) {
+	header := testutil.MustDecodeHex("6281a031a95a7669e42cf56d46b5d921b067ace29c46c89fa2698f3b895d6fcb21208e4e00000165")
+	sols := []uint64{
+		0x017ca085, 0x0181ca71, 0x096b8b98, 0x09d3a607, 0x0b6bb4c8, 0x0c9bbecb, 0x10d1c645, 0x13ba80dc,
+		0x13cb4dc9, 0x15ebc37d, 0x164de862, 0x16a7906a, 0x18c28113, 0x199e50ca, 0x1ba70932, 0x1bc435b1,
+		0x1caad714, 0x1d94ccd4, 0x1da4b49d, 0x1eff189e, 0x2030c2cf, 0x2084a6c3, 0x2111e51e, 0x241ff2d0,
+		0x26bb0111, 0x275fd4a1, 0x27654850, 0x291041de, 0x2a4c1e5b, 0x2a8e54e1, 0x2ba12d29, 0x2d16cbc0,
+		0x2e9e0df8, 0x3209259d, 0x32751e22, 0x33107850, 0x332b35f9, 0x33a134d4, 0x354fc224, 0x384052fb,
+		0x38cdb22e, 0x3e665fed,
+	}
+
+	// Swap the first two edges so the list is no longer strictly ascending.
+	mutated := make([]uint64, len(sols))
+	copy(mutated, sols)
+	mutated[0], mutated[1] = mutated[1], mutated[0]
+
+	valid, err := NewCortex().Verify(header, mutated)
+	if valid {
+		t.Errorf("expected invalid solution for non-ascending edges")
+	}
+	if err != ErrPowTooSmall {
+		t.Errorf("expected ErrPowTooSmall, got %v", err)
 	}
 }

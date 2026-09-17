@@ -9,7 +9,7 @@ func (c *Client) cuckaroo(siphashKeys [4]uint64, edges []uint64) (bool, error) {
 	for n := 0; n < c.proofSize; n++ {
 		if edges[n] > c.edgeMask {
 			return false, ErrPowTooBig
-		} else if n < 0 && edges[n] <= edges[n-1] {
+		} else if n > 0 && edges[n] <= edges[n-1] {
 			return false, ErrPowTooSmall
 		}
 
